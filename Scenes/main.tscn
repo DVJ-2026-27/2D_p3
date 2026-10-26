@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://b0ng7wvysi8t1"]
+
+[ext_resource type="Script" uid="uid://bub8fl7oj28pt" path="res://Scripts/tank.gd" id="3_6bp64"]
+[ext_resource type="Texture2D" uid="uid://bbjvb2h1aarfl" path="res://Textures/Tank2-sheet.png" id="4_344ge"]
+[ext_resource type="Script" uid="uid://cdelyxqbqj0b7" path="res://Scripts/floor.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://ct0ux4lypdejd" path="res://Textures/Tank1.png" id="5_ynf5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnk08"]
+size = Vector2(44, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgds8"]
+atlas = ExtResource("4_344ge")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfvv0"]
+atlas = ExtResource("4_344ge")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykmrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgds8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfvv0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2jouu"]
+
+[sub_resource type="Curve2D" id="Curve2D_kry3j"]
+_data = {
+"points": PackedVector2Array(94.35179, 16.055435, -94.35179, -16.055435, 392, 158, 71.84056, -27.198887, -71.84056, 27.198887, 251, 172, 0, 0, 0, 0, 130, 209, 37.029488, 17.160006, -37.029488, -17.160006, -68, 188, 143.61453, -71.80727, -143.61453, 71.80727, -196, 129, 104.94908, 0, -104.94908, 0, -396, 195, 185.04181, -121.51999, -185.04181, 121.51999, -681, 202, 113.234535, -80.09272, -113.234535, 80.09272, -904, 270, 0, 0, 0, 0, -1065, -166, -19.570917, -420.77472, 19.570917, 420.77472, -1134, 469, -1678.2062, 1472.7115, 1678.2062, -1472.7115, 1098, 501, 0, 0, 0, 0, 1175, -251, 0, 0, 0, 0, 928, 93, 78.84979, 41.499893, -78.84979, -41.499893, 815, 113, 112.049706, 107.89972, -112.049706, -107.89972, 597, -126, 626.7075, 0, -626.7075, 0, 358, -247, -37.415375, -35.8564, 37.415375, 35.8564, 398, -138, -7.7948694, -49.887165, 7.7948694, 49.887165, 495, 0, 0, 0, 0, 0, 463, 149)
+}
+point_count = 19
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jouu"]
+size = Vector2(5548, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykmrp"]
+size = Vector2(77, 2979)
+
+[node name="main" type="Node2D" unique_id=359890797]
+
+[node name="Tank" type="CharacterBody2D" parent="." unique_id=661731015]
+script = ExtResource("3_6bp64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tank" unique_id=1382686223]
+shape = SubResource("RectangleShape2D_gnk08")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tank/CollisionShape2D" unique_id=466898800]
+position = Vector2(2, -20.5)
+sprite_frames = SubResource("SpriteFrames_ykmrp")
+frame_progress = 0.2778981
+
+[node name="Cannon" type="Sprite2D" parent="Tank" unique_id=2059925317]
+z_index = -1
+position = Vector2(-7.999999, -18.999998)
+rotation = 3.1415927
+scale = Vector2(0.8114561, 0.8114561)
+texture = ExtResource("5_ynf5e")
+flip_h = true
+flip_v = true
+
+[node name="mouth" type="Node2D" parent="Tank/Cannon" unique_id=415919846]
+position = Vector2(18.485289, 7.344905e-07)
+
+[node name="Camera2D" type="Camera2D" parent="Tank" unique_id=1772354263]
+zoom = Vector2(2, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=193497300]
+position = Vector2(-139, 115)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=112362753]
+shape = SubResource("WorldBoundaryShape2D_2jouu")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1177720548]
+script = ExtResource("4_jjvhh")
+
+[node name="Path2D" type="Path2D" parent="Floor" unique_id=3899322]
+position = Vector2(-155, -112)
+curve = SubResource("Curve2D_kry3j")
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor" unique_id=1342233376]
+texture_repeat = 2
+position = Vector2(-155, -112)
+color = Color(0.7064069, 0.70460993, 3.85046e-07, 1)
+texture_rotation = 3.1415927
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor" unique_id=2006809710]
+position = Vector2(-155, -112)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=716933339]
+position = Vector2(-5, 1362)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=2006875695]
+position = Vector2(170, -2770)
+shape = SubResource("RectangleShape2D_2jouu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1792025554]
+position = Vector2(315, 24)
+shape = SubResource("RectangleShape2D_2jouu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=610459318]
+position = Vector2(2848.5, -1404.5)
+shape = SubResource("RectangleShape2D_ykmrp")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D/CollisionShape2D3" unique_id=2015458786]
+position = Vector2(-4998.5, 8.5)
+shape = SubResource("RectangleShape2D_ykmrp")
