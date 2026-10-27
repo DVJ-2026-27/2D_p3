@@ -4,9 +4,11 @@
 [ext_resource type="AudioStream" uid="uid://cfbln7epr50b6" path="res://Sounds/se_7ug7ebo4cbe7jylu.wav" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bbjvb2h1aarfl" path="res://Textures/Tank2-sheet.png" id="4_344ge"]
 [ext_resource type="Script" uid="uid://cdelyxqbqj0b7" path="res://Scripts/floor.gd" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://d0f3ptua6kwyu" path="res://Textures/bg.jpg" id="4_ynf5e"]
 [ext_resource type="AudioStream" uid="uid://dydp3jkqg0ccj" path="res://Sounds/pulo-de-um-personagem-de-azejpoeg.wav" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://ct0ux4lypdejd" path="res://Textures/Tank1.png" id="5_ynf5e"]
 [ext_resource type="Script" uid="uid://c1kr8h00tgmip" path="res://Scenes/spawner_node_2d.gd" id="7_6bp64"]
+[ext_resource type="Script" uid="uid://c7ifj0hrdavxd" path="res://Scenes/bg.gd" id="9_ynf5e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnk08"]
 size = Vector2(44, 23)
@@ -154,5 +156,13 @@ position = Vector2(-1083, -217)
 [node name="Timer" type="Timer" parent="Spawner_Node2D" unique_id=1722484983]
 wait_time = 1.2
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1585315575 node_paths=PackedStringArray("tank")]
+z_index = -5
+position = Vector2(-2, 1.9073486e-06)
+scale = Vector2(2.6801696, 2.6801703)
+texture = ExtResource("4_ynf5e")
+script = ExtResource("9_ynf5e")
+tank = NodePath("../Tank")
 
 [connection signal="body_entered" from="Area2D" to="Tank" method="_on_area_2d_body_entered"]
