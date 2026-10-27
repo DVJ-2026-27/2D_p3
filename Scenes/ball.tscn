@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c34bn6gj8px5f" path="res://Scripts/ball.gd" id="1_5st5x"]
 [ext_resource type="Texture2D" uid="uid://b6gtyle51prk6" path="res://Textures/ball.png" id="2_v7a2h"]
+[ext_resource type="AudioStream" uid="uid://beipvlt42lo3" path="res://Sounds/a-single-rapid-energy-fie-3ef3cpys.wav" id="3_376qj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2jouu"]
-radius = 8.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ykmrp"]
 radius = 67.0
@@ -23,5 +24,11 @@ shape = SubResource("CircleShape2D_2jouu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destruction_Area2D" unique_id=1722980913]
 shape = SubResource("CircleShape2D_ykmrp")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="." unique_id=1894515198]
+stream = ExtResource("3_376qj")
+volume_db = -14.579
+pitch_scale = 1.22
+attenuation = 0.4506244
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

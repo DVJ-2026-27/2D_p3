@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://b0ng7wvysi8t1"]
 
 [ext_resource type="Script" uid="uid://bub8fl7oj28pt" path="res://Scripts/tank.gd" id="3_6bp64"]
+[ext_resource type="AudioStream" uid="uid://cfbln7epr50b6" path="res://Sounds/se_7ug7ebo4cbe7jylu.wav" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://bbjvb2h1aarfl" path="res://Textures/Tank2-sheet.png" id="4_344ge"]
 [ext_resource type="Script" uid="uid://cdelyxqbqj0b7" path="res://Scripts/floor.gd" id="4_jjvhh"]
+[ext_resource type="AudioStream" uid="uid://dydp3jkqg0ccj" path="res://Sounds/pulo-de-um-personagem-de-azejpoeg.wav" id="5_21xkr"]
 [ext_resource type="Texture2D" uid="uid://ct0ux4lypdejd" path="res://Textures/Tank1.png" id="5_ynf5e"]
+[ext_resource type="Script" uid="uid://c1kr8h00tgmip" path="res://Scenes/spawner_node_2d.gd" id="7_6bp64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnk08"]
 size = Vector2(44, 23)
@@ -30,19 +33,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2jouu"]
-
 [sub_resource type="Curve2D" id="Curve2D_kry3j"]
+bake_interval = 65.51
 _data = {
-"points": PackedVector2Array(94.35179, 16.055435, -94.35179, -16.055435, 392, 158, 71.84056, -27.198887, -71.84056, 27.198887, 251, 172, 0, 0, 0, 0, 130, 209, 37.029488, 17.160006, -37.029488, -17.160006, -68, 188, 143.61453, -71.80727, -143.61453, 71.80727, -196, 129, 104.94908, 0, -104.94908, 0, -396, 195, 185.04181, -121.51999, -185.04181, 121.51999, -681, 202, 113.234535, -80.09272, -113.234535, 80.09272, -904, 270, 0, 0, 0, 0, -1065, -166, -19.570917, -420.77472, 19.570917, 420.77472, -1134, 469, -1678.2062, 1472.7115, 1678.2062, -1472.7115, 1098, 501, 0, 0, 0, 0, 1175, -251, 0, 0, 0, 0, 928, 93, 78.84979, 41.499893, -78.84979, -41.499893, 815, 113, 112.049706, 107.89972, -112.049706, -107.89972, 597, -126, 626.7075, 0, -626.7075, 0, 358, -247, -37.415375, -35.8564, 37.415375, 35.8564, 398, -138, -7.7948694, -49.887165, 7.7948694, 49.887165, 495, 0, 0, 0, 0, 0, 463, 149)
+"points": PackedVector2Array(73.316444, 51.966736, -73.316444, -51.966736, 353.71222, 370.9845, 64.82878, 165.82436, -64.82878, -165.82436, 251, 172, 0, 0, 0, 0, 130, 209, 117.076546, 26.357967, -117.076546, -26.357967, -68, 188, 277.71045, -255.76653, -277.71045, 255.76653, -196, 129, 104.94908, 0, -104.94908, 0, -396, 195, 185.04181, -121.51999, -185.04181, 121.51999, -681, 202, 113.234535, -80.09272, -113.234535, 80.09272, -904, 270, 2.1471968, 778.9188, -2.1471968, -778.9188, -986.1539, -724, 0, 0, 0, 0, -1215.3846, -876, 278.89905, -86.83441, -278.89905, 86.83441, -1445.7046, -374.35706, 0, 0, 0, 0, -1623.8334, 382.99997, 0, 0, 0, 0, -1501.5385, 140, 0, 0, 0, 0, -1460, 452, 0, 0, 0, 0, -1373.8462, 122, 0, 0, 0, 0, -1321.5386, 646, -98.58775, -833.1197, 98.58775, 833.1197, -1134, 469, 0, 0, 0, 0, -705.38464, 1422, 267.09692, 162.98364, -267.09692, -162.98364, -582.30774, 1320, -733.399, -106.29368, 733.399, 106.29368, -110.76926, 876, -400.68637, -107.17947, 400.68637, 107.17947, 262.30768, 1582, 0, 0, 0, 0, 396.15387, 1436, -353.85724, 1277.8083, 353.85724, -1277.8083, 1098, 501, 122.81969, -78.46073, -122.81969, 78.46073, 1175, -251, 0, 0, 0, 0, 928, 93, 78.84979, 41.499893, -78.84979, -41.499893, 815, 113, 112.049706, 107.89972, -112.049706, -107.89972, 597, -126, 641.07495, -367.91852, -641.07495, 367.91852, 361.9906, -259.68915, 0, 0, 0, 0, 139.22717, -97.805, -37.415375, -35.8564, 37.415375, 35.8564, 398, -138, -7.7948694, -49.887165, 7.7948694, 49.887165, 495, 0, 18.030294, -35.9113, -18.030294, 35.9113, 606.57886, 586.83, 0, 0, 0, 0, 352.95966, 370.9845)
 }
-point_count = 19
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jouu"]
-size = Vector2(5548, 68)
+point_count = 33
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykmrp"]
 size = Vector2(77, 2979)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jouu"]
+size = Vector2(5548, 68)
 
 [node name="main" type="Node2D" unique_id=359890797]
 
@@ -70,35 +72,51 @@ flip_v = true
 position = Vector2(18.485289, 7.344905e-07)
 
 [node name="Camera2D" type="Camera2D" parent="Tank" unique_id=1772354263]
-zoom = Vector2(2, 2)
+zoom = Vector2(0.85, 0.85)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=193497300]
-position = Vector2(-139, 115)
+[node name="Trajectory" type="Line2D" parent="Tank" unique_id=1073879617]
+points = PackedVector2Array(1411, 44)
+width = 2.0
+default_color = Color(0.8235294, 0.7058824, 0.8980392, 0.4509804)
+antialiased = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=112362753]
-shape = SubResource("WorldBoundaryShape2D_2jouu")
+[node name="jump" type="AudioStreamPlayer2D" parent="Tank" unique_id=602346494]
+stream = ExtResource("4_21xkr")
+attenuation = 2.732081
+
+[node name="shooting" type="AudioStreamPlayer2D" parent="Tank" unique_id=769394687]
+stream = ExtResource("5_21xkr")
+volume_db = -13.722
+attenuation = 17.148352
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1177720548]
+position = Vector2(555, 389)
+scale = Vector2(1.3, 0.5)
 script = ExtResource("4_jjvhh")
 
 [node name="Path2D" type="Path2D" parent="Floor" unique_id=3899322]
-position = Vector2(-155, -112)
 curve = SubResource("Curve2D_kry3j")
 
 [node name="Polygon2D" type="Polygon2D" parent="Floor" unique_id=1342233376]
 texture_repeat = 2
 position = Vector2(-155, -112)
+scale = Vector2(1.3, 0.5)
 color = Color(0.7064069, 0.70460993, 3.85046e-07, 1)
 texture_rotation = 3.1415927
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor" unique_id=2006809710]
 position = Vector2(-155, -112)
+scale = Vector2(1.3, 0.5)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=716933339]
 position = Vector2(-5, 1362)
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D" unique_id=2015458786]
+position = Vector2(-2375, -1025)
+shape = SubResource("RectangleShape2D_ykmrp")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=2006875695]
-position = Vector2(170, -2770)
+position = Vector2(196, -2031)
 shape = SubResource("RectangleShape2D_2jouu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1792025554]
@@ -106,9 +124,35 @@ position = Vector2(315, 24)
 shape = SubResource("RectangleShape2D_2jouu")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=610459318]
-position = Vector2(2848.5, -1404.5)
+position = Vector2(2897, -1079)
 shape = SubResource("RectangleShape2D_ykmrp")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D/CollisionShape2D3" unique_id=2015458786]
-position = Vector2(-4998.5, 8.5)
-shape = SubResource("RectangleShape2D_ykmrp")
+[node name="Spawner_Node2D" type="Node2D" parent="." unique_id=1022991966 node_paths=PackedStringArray("target")]
+script = ExtResource("7_6bp64")
+target = NodePath("../Tank")
+
+[node name="Markers" type="Node" parent="Spawner_Node2D" unique_id=471398081]
+
+[node name="Marker2D" type="Marker2D" parent="Spawner_Node2D/Markers" unique_id=859252049]
+position = Vector2(-1488, -197)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawner_Node2D/Markers" unique_id=404631388]
+position = Vector2(1192, -100)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawner_Node2D/Markers" unique_id=686994561]
+position = Vector2(1051, 132)
+
+[node name="Marker2D4" type="Marker2D" parent="Spawner_Node2D/Markers" unique_id=1041050515]
+position = Vector2(-761, 39)
+
+[node name="Marker2D5" type="Marker2D" parent="Spawner_Node2D/Markers" unique_id=1378908158]
+position = Vector2(278, -45)
+
+[node name="Marker2D6" type="Marker2D" parent="Spawner_Node2D/Markers" unique_id=979573219]
+position = Vector2(-1083, -217)
+
+[node name="Timer" type="Timer" parent="Spawner_Node2D" unique_id=1722484983]
+wait_time = 1.2
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="Tank" method="_on_area_2d_body_entered"]

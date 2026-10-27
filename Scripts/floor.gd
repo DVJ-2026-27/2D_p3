@@ -10,6 +10,7 @@ const CRATER_POINTS: int = 24
 
 func _ready() -> void:
 	set_points()
+	add_to_group("Floor", true)
 
 
 func set_points() -> void:
@@ -20,29 +21,28 @@ func set_points() -> void:
 
 
 func update_polygon_2d(world_position: Vector2) -> void:
-	# Convertir la posición global del impacto a coordenadas locales
 	var local_position: Vector2 = ground_polygon.to_local(world_position)
+	var scale_factor: Vector2 = ground_polygon.global_scale
 
-	# Crear el polígono circular del cráter
 	var crater := PackedVector2Array()
 
 	for i in range(CRATER_POINTS):
-		var angle: float = TAU * float(i) / float(CRATER_POINTS)
+		var angle := TAU * float(i) / float(CRATER_POINTS)
 		crater.append(
-			local_position + Vector2(cos(angle), sin(angle)) * CRATER_RADIUS
+			local_position + Vector2(
+				cos(angle) / scale_factor.x,
+				sin(angle) / scale_factor.y
+			) * CRATER_RADIUS
 		)
 
-	# Restar el cráter al terreno
 	var result: Array[PackedVector2Array] = Geometry2D.clip_polygons(
 		ground_polygon.polygon,
 		crater
 	)
 
 	if result.is_empty():
-		print("No se ha obtenido ningún polígono.")
 		return
 
-	# Elegir el polígono de mayor área
 	var largest_polygon: PackedVector2Array = result[0]
 	var largest_area: float = polygon_area(largest_polygon)
 
@@ -53,11 +53,10 @@ func update_polygon_2d(world_position: Vector2) -> void:
 			largest_area = area
 			largest_polygon = polygon
 
-	# Actualizar visual y colisión
 	ground_polygon.polygon = largest_polygon
 	collision_polygon.polygon = largest_polygon
 
-	print("Cráter aplicado. Puntos del terreno: ", largest_polygon.size())
+	print(largest_polygon.size())
 
 
 func polygon_area(polygon: PackedVector2Array) -> float:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w57gwfek4x2g" path="res://Scripts/zombie.gd" id="1_2fexr"]
 [ext_resource type="Texture2D" uid="uid://bxb7kvpwua0na" path="res://Textures/Zombie.png" id="2_afnpj"]
+[ext_resource type="AudioStream" uid="uid://1d710ym6ki80" path="res://Sounds/se_7la34fl7pskwr3by.wav" id="3_iyl7r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
 atlas = ExtResource("2_afnpj")
@@ -284,7 +285,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bjha6")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -405,11 +406,19 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykmrp"]
 
 [node name="Zombie" type="CharacterBody2D" unique_id=1592629571]
+scale = Vector2(1.8, 1.8)
 script = ExtResource("1_2fexr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=710979706]
+scale = Vector2(1.8, 1.8)
 sprite_frames = SubResource("SpriteFrames_2jouu")
-animation = &"run"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=628695833]
+scale = Vector2(1.8, 1.8)
 shape = SubResource("CapsuleShape2D_ykmrp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=81622827]
+stream = ExtResource("3_iyl7r")
+volume_db = -16.481
+attenuation = 1.6245049
